@@ -1,0 +1,19 @@
+{
+  "name": "crud_using_mongodb",
+  "version": "1.0.0",
+  "description": "Fundamental concept for using the CRUD (Create-Retrieve-Update-Delete) operations by using MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ranjan Das",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
+    "mongoose": "^5.11.15",
+    "nodemon": "^2.0.7"
+  }
+}
