@@ -21,21 +21,12 @@
     </nav>
 
     <div class="container mt-4">
-        {{#if message}}
-        <h4 class="alert alert-danger mt-4">
-            {{message}}
-        </h4>
-        {{/if}}
         <div class="card">
             <div class="card-header">
-                Register Form
+                Open to Your Article
             </div>
             <div class="card-body">
-                <form action="/users/register" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="name" class="form-control" id="name" name="name">
-                    </div>
+                {{!-- <form action="/users/article" method="POST">
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input type="email" class="form-control" id="email" name="email">
@@ -44,10 +35,17 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Register user</button>
-                </form>
+                    <button type="submit" class="btn btn-primary">Login user</button>
+                </form> --}}
+
+                <div class="row text-center mt-4">This is your article</div>
             </div>
         </div>
+        {{#if message}}
+        <h4 class="alert alert-danger mt-4">
+            {{message}}
+        </h4>
+        {{/if}}
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
