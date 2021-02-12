@@ -8,7 +8,7 @@ let User = require('../models/user')
 
 router.get('/login', (req,res) => {
     if(req.cookies.jwt){
-        res.render('article')
+        res.render('login')
     } else {
         res.redirect('/')
     }
