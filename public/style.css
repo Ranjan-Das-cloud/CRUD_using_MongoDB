@@ -36,4 +36,16 @@ nav {
   .avatar {
     width: 65%;
   }
+
+  .substr {
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  .substr:hover {
+    font-size :23px;
+    text-decoration: wavy;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:cadetblue;
+  }
   

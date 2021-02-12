@@ -15,30 +15,38 @@
             <li>
                 <a href="/">HOME</a>
                 <a href="/articlepage/article">BROWSE ALL</a>
-                <a href="/users/login">LOGOUT</a>
+                <a href="/users/logout">LOGOUT</a>
             </li>
         </ul>
     </nav>
 
     <div class="container mt-4">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header text-md-center text-center">
                 Add to Your Article
             </div>
             <div class="card-body">
-                {{!-- <form action="/users/article" method="POST">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                <div class="text-danger">
+                    <form action="/articlepage/add" method="POST">
+                    <div class="form-group mb-3">
+                        <label for="title">Article Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter your title....">
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                    <div class="form-group mb-3">
+                        <label for="author">Name of Author</label>
+                        <input type="text" class="form-control" id="author" name="author" placeholder="Enter your name....">
                     </div>
-                    <button type="submit" class="btn btn-primary">Login user</button>
-                </form> --}}
-
-                <div class="row text-center mt-4">This is your add article page</div>
+                    <div class="form-group mb-3">
+                        <label for="body">Write Your Article</label>
+                        <textarea type="text" class="form-control" id="body" name="body" placeholder="Enter your article...." rows="10" cols="60"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="articletag">Article Tags</label>
+                        <input type="text" class="form-control" id="tags" name="tags" placeholder="Enter your tags....">
+                    </div>
+                    <center><button type="submit" class="btn btn-primary mt-4">Publish Article</button></center>
+                </form>
+                </div>
             </div>
         </div>
         {{#if message}}

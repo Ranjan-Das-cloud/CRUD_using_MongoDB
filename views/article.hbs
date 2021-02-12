@@ -6,17 +6,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 </head>
+
+<script>
+    $(document).ready(function() {
+        var value = $('#substr').text().substr(0, 250)
+        console.log(value.length)
+        $('#substr').text(value).append(`<a href="#" class="substr"> Read More... </a>`)
+    })
+</script>
 
 <body>
     <nav>
         <h4>Articles of User</h4>
         <ul>
             <li>
-                <a href="/">LOGIN</a>
+                <a href="/">HOME</a>
                 {{!-- <a href="/articlepage/article">ARTICLE</a> --}}
                 <a href="/articlepage/add">ADD ARTICLE</a>
-                <a href="/users/register">LOGOUT</a>
+                <a href="/users/logout">LOGOUT</a>
             </li>
         </ul>
     </nav>
@@ -27,19 +36,23 @@
                 Open to Your Article
             </div>
             <div class="card-body">
-                {{!-- <form action="/users/article" method="POST">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login user</button>
-                </form> --}}
-
                 <div class="row text-center mt-4">This is your article</div>
+                <div class="col-md-8 offset-2">
+                    <h3>All Articles</h3>
+                    <ul class="list-group">
+                        {{#each articleData}}
+                        <li class="list-group-item">
+                            <h3><a href="#" id="articleId">{{title}}</a></h3>
+                            <h4 id="substr">
+                                {{body}}
+                            </h4>
+                            <h5>
+                                BY: {{author}} <h6>&nbsp;{{author_id}}</h6>
+                            </h5>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
         </div>
         {{#if message}}
