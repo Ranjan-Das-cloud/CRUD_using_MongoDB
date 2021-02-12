@@ -18,7 +18,7 @@ router.get('/login', (req,res) => {
 //     if(req.cookies.jwt){
 //         res.render('article')
 //     } else {
-//         res.render('index')
+//         res.redirect('/')
 //     }
 // })
 

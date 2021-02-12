@@ -8,20 +8,25 @@ const  Article = require('../models/article')
 
 router.get('/article', (req,res) => {
 
-    console.log('working');
+    if(req.cookies.jwt){
+        
+        console.log('working');
 
-    require('../models/user',).find({}, (err, results) => {
-        console.log(results);
-    })
-    let query = {}
-    Article.find({}, (err, results) => {
-        if(err) {
-            console.log(err);
-        } else {
+        require('../models/user',).find({}, (err, results) => {
             console.log(results);
-        }
-    })
-    res.render('article')
+        })
+        let query = {}
+        Article.find({}, (err, results) => {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log(results);
+            }
+        })
+        res.render('article')
+    } else {
+        res.redirect('/')
+    }
 })
 
 router.get('/add', (req,res) => {
