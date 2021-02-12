@@ -14,13 +14,9 @@ router.get('/login', (req,res) => {
     }
 })
 
-// router.get('/article', (req,res) => {
-//     if(req.cookies.jwt){
-//         res.render('article')
-//     } else {
-//         res.redirect('/')
-//     }
-// })
+router.get('/signin', (req,res) => {
+    res.render('index')
+})
 
 router.get('/register', (req,res) => {
     if(req.cookies.jwt){
@@ -109,6 +105,16 @@ router.post('/register', [
             }
         })
     }
+})
+
+router.get('/logout', (req, res) => {
+    console.log('USER IS LOGGED OUT !!');
+    res.cookie('jwt', 'logout', {
+        expires: new Date(Date.now() + 1),
+        httpOnly: true
+    })
+
+    res.status(200).redirect('/users/signin')
 })
 
 module.exports = router;
