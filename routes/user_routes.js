@@ -7,11 +7,15 @@ const jwt = require('jsonwebtoken')
 let User = require('../models/user')
 
 router.get('/login', (req,res) => {
-    res.render('index')
+    res.render('article')
 })
 
 router.get('/register', (req,res) => {
-    res.render('register')
+    if(req.cookies.jwt){
+        res.redirect('/users/login')
+    } else {
+        res.render('register')
+    }
 })
 
 router.post('/login', (req,res) => {
