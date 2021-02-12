@@ -55,7 +55,7 @@ router.post('/login', (req,res) => {
             res.status(200).redirect('/users/login')
 
         } else {
-            console.log(error);
+            console.log('Wrong Email or Password !!')
             res.render('index', {
                 message: 'Wrong email and password'
             })
