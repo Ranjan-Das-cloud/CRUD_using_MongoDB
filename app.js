@@ -57,18 +57,18 @@ app.use(bodyParser.json())
 
 //Home Route
 app.get('/', (req,res) => {
-    // console.log('Cookies: ', req.cookies.jwt);
-    // if(req.cookies.jwt){
-    //     res.redirect('/article')
-    // } else {
-    //     res.render('index')
-    // }
-    res.render('index')
+    console.log('Cookies: ', req.cookies.jwt);
+    if(req.cookies.jwt){
+        res.redirect('/users/login')
+    } else {
+        res.render('index')
+    }
+    // res.render('index')
 })
 
 // Defining routes
 app.use('/users', require('./routes/user_routes'));
-//app.use('/articlepage', require('./routes/article_routes'));
+app.use('/articlepage', require('./routes/article_routes'));
 
 app.listen(8000, () => {
     console.log("Server is running at port 8000")
