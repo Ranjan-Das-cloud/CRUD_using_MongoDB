@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const app = express()
 const { check, validationResult } = require('express-validator')
 //const { session } = require('passport')
+let update_response =[]
 
 //Article Model
 const  Article = require('../models/article')
@@ -42,6 +44,75 @@ router.get('/add', (req,res) => {
     }
 })
 
+router.get('/update', (req,res) => {
+    if(req.cookies.jwt) {
+        res.render('update_article')
+    } else {
+        res.status(200).redirect('/')
+    }
+})
+
+router.post('/update', [
+    check('title', 'Enter a valid title').isLength({min: 10}),
+    check('body', 'Enter the minimum number of words').isLength({min: 100})
+], (req,res) => {
+
+    const error = validationResult(req)
+
+    if(!error.isEmpty()) {
+        res.render('update_article', {
+            errors: error.mapped()
+        })
+    } else {
+        update_response = req.body
+        console.log("update_article: ", update_response)
+        
+        Article.findOneAndUpdate(
+            { author: 'Ranjan das' },
+            {
+              $set: {
+                title: update_response.title,
+                body: update_response.body,
+              }
+            },
+            {
+              upsert: false
+            }
+          )
+          .then(result => {
+            console.log(result)
+            console.log('Article is successfully updated !!')
+            res.redirect('/articlepage/article')
+           })
+          .catch(error => console.error(error))
+    }
+})
+
+router.get('/delete', (req,res) => {
+
+    const error = validationResult(req)
+
+    if(!error.isEmpty()) {
+        res.render('delete_article', {
+            errors: error.mapped()
+        })
+    } else {
+        // delete_response = req.body
+        // console.log("deleted_article: ", deleted_response)
+        
+        Article.deleteOne(
+            { author: 'Ranjan das' },
+
+          )
+          .then(result => {
+            console.log(result)
+            console.log('Article is successfully deleted !!')
+            res.render('delete_article')
+           })
+          .catch(error => console.error(error))
+    }
+})
+
 router.post('/add', [
     check('author', 'Enter a valid Name').isLength({min: 3}),
     check('title', 'Enter a valid title').isLength({min: 10}),
@@ -68,3 +139,5 @@ router.post('/add', [
 })
 
 module.exports = router;
+// const { update_response } = require('../routes/article_routes')
+// module.exports.variableName = "update_response";

@@ -38,6 +38,7 @@
             <div class="card-body">
                 <div class="row text-center mt-4">This is your article</div>
                 <div class="col-md-8 offset-2">
+                    <div>
                     <h3>All Articles</h3>
                     <ul class="list-group">
                         {{#each articleData}}
@@ -52,6 +53,13 @@
                         </li>
                         {{/each}}
                     </ul>
+                    </div>
+                    <div class="row mt-3">
+                        <center>
+                            <a href="/articlepage/update"><button class="btn btn-primary text-white" id="article-edit-button">Edit this article</button></a>
+                            <a href="/articlepage/delete"><button class="btn btn-danger text-white offset-1 offset-md-5 offset-sm-1" id="delete-button">Delete this article</button></a>
+                        </center>
+                    </div>
                 </div>
             </div>
         </div>

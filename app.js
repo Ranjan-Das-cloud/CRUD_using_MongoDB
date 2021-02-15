@@ -9,7 +9,7 @@ const hbs = require('handlebars')
 //const exphbs = require('express-handlebars')
 
 //Creating Connection to MongoDB
-mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true}).then(() => {
     console.log("MongoDB is connected !!");
 }).catch((err) => {
     console.log(err);
@@ -65,6 +65,12 @@ app.get('/', (req,res) => {
     }
     // res.render('index')
 })
+
+// Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
+// by default, you need to set it to false.
+// mongoose.set('useFindAndModify', false);
+
+
 
 // Defining routes
 app.use('/users', require('./routes/user_routes'));
