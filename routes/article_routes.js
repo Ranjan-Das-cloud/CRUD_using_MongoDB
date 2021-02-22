@@ -98,10 +98,10 @@ router.get('/delete', (req,res) => {
         })
     } else {
         // delete_response = req.body
-        // console.log("deleted_article: ", deleted_response)
+        console.log("deleted_article: ", req.body)
         
         Article.deleteOne(
-            { author: 'Ranjan das' },
+            { author: 'I love to play basketball ' },
 
           )
           .then(result => {
