@@ -68,7 +68,7 @@ router.post('/update', [
         console.log("update_article: ", update_response)
         
         Article.findOneAndUpdate(
-            { author: 'Ranjan das' },
+            { _id: update_response.authkey },
             {
               $set: {
                 title: update_response.title,
@@ -97,11 +97,11 @@ router.get('/delete', (req,res) => {
             errors: error.mapped()
         })
     } else {
-        // delete_response = req.body
+        delete_response = req.body
         console.log("deleted_article: ", req.body)
         
         Article.deleteOne(
-            { author: 'I love to play basketball ' },
+            { _id: delete_response.authkey },
 
           )
           .then(result => {
