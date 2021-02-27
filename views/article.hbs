@@ -6,18 +6,81 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </head>
 
 <script>
+
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('exampleModal')
+    let expand = document.getElementsByClassName('expand')
+
     $(document).ready(function() {
-        var value = $('#substr').text().substr(0, 250)
+        var value = $('.substr').text().substr(0, 250)
         console.log(value.length)
-        $('#substr').text(value).append(`<a href="#" class="substr"> Read More... </a>`)
+        $('.substr').text(value).append(`<a href="#" class="expand"> Read More... </a>`)
+
     })
+
 </script>
 
 <body>
+    {{!-- <!-- Modal Block -->
+<div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog">
+        <div class="modal-content" id="myInput">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <button
+            type="button"
+            class="btn-close"
+            data-mdb-dismiss="modal"
+            aria-label="Close"
+            ></button>
+        </div>
+        <div class="modal-body">
+            <form>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                <input type="text" class="form-control" id="recipient-name" />
+            </div>
+            <div class="mb-3">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+            Close
+            </button>
+            <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+        </div>
+    </div>
+    </div> --}}
+
+
     <nav>
         <h4>Articles of User</h4>
         <ul>
@@ -30,13 +93,18 @@
         </ul>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4 mb-4">
+        {{#if message}}
+        <h4 class="alert alert-danger mt-4">
+            {{message}}
+        </h4>
+        {{/if}}
         <div class="card">
             <div class="card-header">
-                Open to Your Article
+                <h5><b>Browse any Article</b></h5>
             </div>
             <div class="card-body">
-                <div class="row text-center mt-4">This is your article</div>
+                <div class="row text-center mt-4"><br></div>
                 <div class="col-md-8 offset-2">
                     <div>
                     <h3>All Articles</h3>
@@ -44,34 +112,37 @@
                         {{#each articleData}}
                         <li class="list-group-item">
                             <h3><a href="#" id="articleId">{{title}}</a></h3>
-                            <h4 id="substr">
+                            <h4 class="substr">
                                 {{body}}
                             </h4>
                             <h5>
-                                BY: {{author}} <h6>&nbsp;{{author_id}}</h6>
+                                BY: {{author}} <h6>&nbsp;#published_id: {{id}}</h6>
                             </h5>
-                        </li>
+                            <div class="row mt-3 mb-2">
+                                <center>
+                                    <a href="/articlepage/update/?article_id={{id}}"><button class="btn btn-primary text-white" id="article-edit-button">Edit this article</button></a>
+                                    <a href="/articlepage/delete/?article_id={{id}}"><button class="btn btn-danger text-white offset-1 offset-md-5 offset-sm-1" id="article-delete-button">Delete this article</button></a>
+                                    {{!-- <button class="btn btn-danger text-white offset-1 offset-md-5 offset-sm-1" id="myModal" type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal" data-mdb-whatever="@mdo">Delete this article</button> --}}
+                                </center>
+                            </div>
+                        </li><br><br>
                         {{/each}}
                     </ul>
-                    </div>
-                    <div class="row mt-3">
-                        <center>
-                            <a href="/articlepage/update"><button class="btn btn-primary text-white" id="article-edit-button">Edit this article</button></a>
-                            <a href="/articlepage/delete"><button class="btn btn-danger text-white offset-1 offset-md-5 offset-sm-1" id="delete-button">Delete this article</button></a>
-                        </center>
                     </div>
                 </div>
             </div>
         </div>
-        {{#if message}}
-        <h4 class="alert alert-danger mt-4">
-            {{message}}
-        </h4>
-        {{/if}}
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+
+
+
+    {{!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> --}}
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </body>
 
 </html>
