@@ -30,9 +30,11 @@
     let expand = document.getElementsByClassName('expand')
 
     $(document).ready(function() {
+        $('#subscript').addClass('substr')
         var value = $('.substr').text().substr(0, 250)
         console.log(value.length)
         $('.substr').text(value).append(`<a href="#" class="expand"> Read More... </a>`)
+        
 
     })
 
@@ -112,7 +114,7 @@
                         {{#each articleData}}
                         <li class="list-group-item">
                             <h3><a href="#" id="articleId">{{title}}</a></h3>
-                            <h4 class="substr">
+                            <h4 id="subscript">
                                 {{body}}
                             </h4>
                             <h5>

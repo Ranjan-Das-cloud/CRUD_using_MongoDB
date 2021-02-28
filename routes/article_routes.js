@@ -89,6 +89,13 @@ router.post('/update', [
 })
 
 router.get('/delete', (req,res) => {
+    if(req.cookies.jwt){
+        return res.render('delete_article')
+    }
+    return res.redirect('/')
+})
+
+router.post('/delete', (req,res) => {
 
     const error = validationResult(req)
 
@@ -107,7 +114,9 @@ router.get('/delete', (req,res) => {
           .then(result => {
             console.log(result)
             console.log('Article is successfully deleted !!')
-            res.render('delete_article')
+            res.render('delete_conf', {
+                message: "Your Article has been deleted successfully !!"
+            })
            })
           .catch(error => console.error(error))
     }

@@ -29,23 +29,23 @@
     </nav>
 
     <div class="container mt-4">
+        {{#if message}}
+        <h4 class="alert alert-danger mt-4">
+            {{message}}
+        </h4>
+        {{/if}}
         <div class="card">
             <div class="card-header text-md-center text-center">
                 Deleted Article Information
             </div>
             <div class="card-body">
                 <div>
-                    <h3 class="text-secondary">The Article No. {{id}} has been removed !!</h3>
+                    <h3 class="text-secondary text-center">Hoping, you are thinking to post more interesting very soon !!</h3>
                 </div>
                 <br><br>
                 <center><a href="/articlepage/article"><button type="submit" class="btn btn-primary mt-4 btn-disable" id="home">Go to Your Articles</button></a></center>
             </div>
         </div>
-        {{#if message}}
-        <h4 class="alert alert-danger mt-4">
-            {{message}}
-        </h4>
-        {{/if}}
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
