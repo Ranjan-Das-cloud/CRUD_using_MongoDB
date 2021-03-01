@@ -36,7 +36,7 @@ router.post('/login', (req,res) => {
             /* req,session.email = results.email
             req.session.password = results.password */
 
-            const token = jwt.sign({email: results.email}, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN })
+            const token = jwt.sign({email: results.email}, (process.env.JWT_SECRET + Math.random()*300), { expiresIn: process.env.JWT_EXPIRES_IN })
 
             console.log(token);
 
