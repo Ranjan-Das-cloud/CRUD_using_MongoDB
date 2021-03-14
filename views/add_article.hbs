@@ -29,20 +29,21 @@
                 <div class="text-danger">
                     <form action="/articlepage/add" method="POST">
                     <div class="form-group mb-3">
-                        <label for="title">Article Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter your title....">
+                        <label for="title">Article Title <sup><b>*</b></sup></label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter your title...." required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="author">Name of Author</label>
-                        <input type="text" class="form-control" id="author" name="author" placeholder="Enter your name....">
+                        <label for="author">Name of Author <sup><b>*</b></sup></label>
+                        <input type="text" class="form-control" id="author" name="author" placeholder="Enter your name...." required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="body">Write Your Article</label>
-                        <textarea type="text" class="form-control" id="body" name="body" placeholder="Enter your article...." rows="10" cols="60"></textarea>
+                        <label for="body">Write Your Article <sup><b>*</b></sup></label>
+                        <textarea type="text" class="form-control" id="body" name="body" placeholder="Enter your article...." required rows="10" cols="60"></textarea>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="articletag">Article Tags</label>
-                        <select>
+                        <label for="articletag">Article Tags</label><br>
+                        <select class="form-control">
+                            <option>--- select options</option>
                             <option>Entertainment</option>
                             <option>Web appication</option>
                         </select>
