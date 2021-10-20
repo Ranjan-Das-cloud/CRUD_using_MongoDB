@@ -36,6 +36,9 @@ dotenv.config({
 //Initializing cookie-parser
 app.use(cookieParser())
 
+/* Views Middleware */
+app.set('views', path.join(__dirname, "./views"));
+
 //Initializing express-handlebars
 //app.engine('.html', exphbs({defaultlayout: 'home', extname: 'html'}));
 
@@ -50,10 +53,12 @@ app.set('view engine', 'hbs');
 // }))
 
 //Body-Parser
-app.use(bodyParser.urlencoded({ extended: true }))
+// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
 // Values that we are getting from the form must come in json format
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
+app.use(express.json())
 
 //Home Route
 app.get('/', (req,res) => {
