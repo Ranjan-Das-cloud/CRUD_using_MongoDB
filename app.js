@@ -40,7 +40,13 @@ app.use(cookieParser())
 app.set('views', path.join(__dirname, "./views"));
 
 //Initializing express-handlebars
-//app.engine('.html', exphbs({defaultlayout: 'home', extname: 'html'}));
+// app.engine('.html', exphbs({defaultlayout: 'home', extname: 'html'}));
+app.engine('handlebars', exphbs.create({
+    handlebars: allowInSecurePrototypeAccess(hbs),
+    defaultlayout: 'main',
+    layoutDir: app.get('views') + '/layouts',
+    partialDir: [app.get('views') + '/partials']
+}).engine);
 
 // Setting up the View Engine
 app.set('view engine', 'hbs');
