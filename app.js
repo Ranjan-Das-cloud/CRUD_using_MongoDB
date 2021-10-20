@@ -9,7 +9,7 @@ const hbs = require('handlebars')
 //const exphbs = require('express-handlebars')
 
 //Creating Connection to MongoDB
-mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true}).then(() => {
+mongoose.connect('mongodb://localhost:27017/blog').then(() => {
     console.log("MongoDB is connected !!");
 }).catch((err) => {
     console.log(err);
