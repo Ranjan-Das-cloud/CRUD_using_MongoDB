@@ -10,7 +10,7 @@ const hbs = require('handlebars')
 
 //Creating Connection to MongoDB
 mongoose.connect(process.env.DB_CLOUD_URI).then(() => {
-    console.log("MongoDB is connected !!");
+    console.log("MongoDB is connected with host !!");
 }).catch((err) => {
     console.log(err);
 })
@@ -87,6 +87,6 @@ app.get('/', (req,res) => {
 app.use('/users', require('./routes/user_routes'));
 app.use('/articlepage', require('./routes/article_routes'));
 
-app.listen(8000, () => {
-    console.log("Server is running at port 8000")
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running at port ${process.env.PORT} in production`)
 })
