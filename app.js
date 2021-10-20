@@ -6,7 +6,7 @@ const dotenv = require('dotenv')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const hbs = require('handlebars')
-//const exphbs = require('express-handlebars')
+const exphbs = require('express-handlebars')
 
 //Creating Connection to MongoDB
 mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true}).then(() => {
