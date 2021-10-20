@@ -34,15 +34,15 @@
                 <form action="/users/register" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="name" class="form-control" id="name" name="name">
+                        <input type="name" class="form-control" id="name" name="name" required="true" min="3" max="50">
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                        <input type="email" class="form-control" id="email" name="email" required="true">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" required="true">
                     </div>
                     <button type="submit" class="btn btn-primary">Register user</button>
                 </form>
