@@ -10,6 +10,7 @@
   "author": "Ranjan Das",
   "license": "ISC",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
@@ -17,10 +18,10 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "express-validator": "^6.9.2",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "hbs": "^4.1.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.15",
+    "mongoose": "^6.0.11",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1"
   },

@@ -6,7 +6,7 @@ const dotenv = require('dotenv')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const hbs = require('handlebars')
-const exphbs = require('express-handlebars')
+//const exphbs = require('express-handlebars')
 
 //Creating Connection to MongoDB
 mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true}).then(() => {
@@ -41,12 +41,12 @@ app.set('views', path.join(__dirname, "./views"));
 
 //Initializing express-handlebars
 // app.engine('.html', exphbs({defaultlayout: 'home', extname: 'html'}));
-app.engine('handlebars', exphbs.create({
-    handlebars: allowInSecurePrototypeAccess(hbs),
-    defaultlayout: 'main',
-    layoutDir: app.get('views') + '/layouts',
-    partialDir: [app.get('views') + '/partials']
-}).engine);
+// app.engine('handlebars', exphbs.create({
+//     handlebars: allowInSecurePrototypeAccess(hbs),
+//     defaultlayout: 'main',
+//     layoutDir: app.get('views') + '/layouts',
+//     partialDir: [app.get('views') + '/partials']
+// }).engine);
 
 // Setting up the View Engine
 app.set('view engine', 'hbs');
