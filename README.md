@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Go to the site to view demonstration:
-Deployed to Heroku - "https://mongodb.herokuapp.com"
+Deployed to Heroku - "https://blogfair.herokuapp.com"
 
 ## Available Scripts
 
